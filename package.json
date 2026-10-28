@@ -1,12 +1,18 @@
 {
   "name": "mreyes-mobile",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "main": "index.ts",
   "dependencies": {
     "expo": "~58.0.19",
+    "expo-file-system": "~58.0.11",
+    "expo-sharing": "~58.0.20",
+    "expo-splash-screen": "~58.0.11",
     "expo-status-bar": "~58.0.4",
+    "expo-system-ui": "~58.0.6",
     "react": "19.3.0",
-    "react-native": "0.88.0"
+    "react-native": "0.88.0",
+    "react-native-safe-area-context": "~5.10.1",
+    "react-native-webview": "14.0.1"
   },
   "devDependencies": {
     "@types/react": "~19.3.0",
@@ -14,9 +20,17 @@
   },
   "scripts": {
     "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web"
+    "android": "expo run:android",
+    "ios": "expo run:ios",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test tests/*.test.cjs",
+    "prebuild:android": "expo prebuild --platform android",
+    "bundle:android": "expo export --platform android",
+    "check": "npm run typecheck && npm test",
+    "android:preview": "bash scripts/build-android-preview.sh"
   },
-  "private": true
+  "private": true,
+  "engines": {
+    "node": ">=22.13.0"
+  }
 }
